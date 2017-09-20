@@ -1,4 +1,2 @@
 # ReactNativeLoginApp
-A simple React Native App for logging in to a laravel app or facebook
-
-Nothing special just trying out React Native
+A simple React Native App for logging in to a Laravel 5.4 app via API Passport
