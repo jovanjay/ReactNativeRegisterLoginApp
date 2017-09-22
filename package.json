@@ -4,7 +4,7 @@
   "description": "Hello Expo!",
   "author": null,
   "private": true,
-  "main": "node_modules/expo/AppEntry.js",
+  "main": "app/App.js",
   "dependencies": {
     "axios": "^0.16.2",
     "expo": "^20.0.0",

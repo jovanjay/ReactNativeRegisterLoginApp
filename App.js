@@ -1,3 +1,4 @@
+import Expo from 'expo';
 import React, { Component } from 'react';
 import Axios from 'axios'
 import {
@@ -157,4 +158,4 @@ export default class LoginApp extends Component {
 }
 
 // skip this line if using Create React Native App
-// AppRegistry.registerComponent('AwesomeProject', () => LoginApp);
+Expo.registerRootComponent(LoginApp);
