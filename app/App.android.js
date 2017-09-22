@@ -10,17 +10,14 @@ import {
   XMLHttpRequest
 } from 'react-native';
 
-import {
-  BASIC_AUTH_UNAME,
-  BASIC_AUTH_PASSWORD
-} from 'react-native-dotenv'
+
 
 var $http = Axios.create({
   baseURL: 'http://dev.domain.com',
   timeout: 5000,
   auth: {
-    username: BASIC_AUTH_UNAME,
-    password: BASIC_AUTH_PASSWORD
+    username: 'admin',
+    password: 'password'
   }
 });
 
