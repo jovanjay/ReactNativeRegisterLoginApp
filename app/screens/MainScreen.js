@@ -1,5 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Button } from 'react-native';
+
+import LoginButton from '../components/Main/LoginButton';
+import RegisterButton from '../components/Main/RegisterButton';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,11 +18,9 @@ const MainScreen = () => (
     <Text>
       Main screen
     </Text>
+    <LoginButton/>
+    <RegisterButton/>
   </View>
 );
-
-MainScreen.navigationOptions = {
-  title: 'Home Screen',
-};
 
 export default MainScreen;
