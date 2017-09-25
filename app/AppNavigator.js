@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 
 
-import LoginScreen from './screens/LoginScreen';
-import MainScreen from './screens/MainScreen';
+import LoginScreen from './components/Login/Login';
+import MainScreen from './components/Main/Main';
 import RegisterScreen from './screens/RegisterScreen';
 import DashBoardScreen from './screens/DashBoardScreen';
 
@@ -20,7 +20,9 @@ export const AppNavigator = StackNavigator({
 });
 
 const AppWithNavigationState = ({ dispatch, nav }) => (
-  <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
+  <AppNavigator navigation={
+      addNavigationHelpers({ dispatch, state: nav })
+    } />
 );
 
 AppWithNavigationState.propTypes = {

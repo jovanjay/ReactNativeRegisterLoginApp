@@ -6,7 +6,7 @@ import { NavigationActions } from 'react-navigation';
 import { AppNavigator } from '../AppNavigator';
 
 import nav, * as fromNav from './navReducers';
-import login, * as fromLogin from './loginReducer';
+import login, * as fromLogin from './loginReducers';
 
 const AppReducer = combineReducers({
   nav,

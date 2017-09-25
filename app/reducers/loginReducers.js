@@ -1,7 +1,7 @@
 import * as actionTypes from '../AppActionTypes';
 
 //Reducer
-const DEFAULT_ STATE = {onLogin: false};
+const DEFAULT_STATE = {onLogin: false};
 export default function(state = DEFAULT_STATE, action) {
   switch (action.type) {
     case actionTypes.ON_LOGIN:
