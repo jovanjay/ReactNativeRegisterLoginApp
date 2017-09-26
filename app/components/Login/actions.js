@@ -19,7 +19,6 @@ var $http = Axios.create({
 });
 
 https://github.com/reactjs/redux/issues/291
-
 export const loginError(error) {
   return {error, type: actionTypes.LOGIN_ERROR};
 }
