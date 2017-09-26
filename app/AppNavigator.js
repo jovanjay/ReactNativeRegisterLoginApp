@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 
-
 import LoginScreen from './screens/LoginScreen';
 import MainScreen from './screens/MainScreen';
 import RegisterScreen from './screens/RegisterScreen';
