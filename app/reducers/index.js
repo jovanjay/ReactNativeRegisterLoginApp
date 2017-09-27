@@ -6,11 +6,15 @@ import { NavigationActions } from 'react-navigation';
 import { AppNavigator } from '../AppNavigator';
 
 import nav, * as fromNav from './navReducers';
-import login, * as fromLogin from './loginReducer';
+import login, * as fromLogin from './loginReducers';
+import register, * as fromRegister from './registerReducers';
+import dashboard, * as fromDashboard from './dashboardReducers';
 
 const AppReducer = combineReducers({
   nav,
-  login
+  login,
+  register,
+  dashboard
 });
 
 export default AppReducer;

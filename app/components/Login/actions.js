@@ -5,6 +5,7 @@
 import * as actionTypes from '../../AppActionTypes';
 import {getLogin} from '../../reducers/loginReducer';
 import Http from '../../AppHttp';
+import { NavigationActions } from 'react-navigation';
 import {
   AsyncStorage,
   XMLHttpRequest
