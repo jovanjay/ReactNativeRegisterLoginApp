@@ -43,9 +43,6 @@ export const login = (user) => {
     const {onLogging} = getLogin(getState())
     if(!onLogging) {
 
-      //tell app that is logging in
-      dispatch(loginRequest(user.email, user.password));
-
       //call server for auth
       Http.post('/m/login', {
         'email' : user.email,
@@ -70,7 +67,9 @@ export const login = (user) => {
         console.error(error);
         dispatch(loginError(response));
       });
-      dispatch({user, type: actionTypes.LOGIN_ATTEMPT});
+
+      //tell app that is logging in
+      dispatch(loginRequest(user.email, user.password));
     }
   };
 }

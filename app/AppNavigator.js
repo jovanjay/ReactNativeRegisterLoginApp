@@ -6,10 +6,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 
-import LoginScreen from './screens/LoginScreen';
-import MainScreen from './screens/MainScreen';
-import RegisterScreen from './screens/RegisterScreen';
-import DashBoardScreen from './screens/DashBoardScreen';
+import LoginScreen from './components/Login';
+import MainScreen from './components/Main';
+import RegisterScreen from './components/Register';
+import DashBoardScreen from './components/DashBoard';
 
 export const AppNavigator = StackNavigator({
   Login: { screen: LoginScreen },
