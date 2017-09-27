@@ -8,13 +8,13 @@ import { AppNavigator } from '../AppNavigator';
 import nav, * as fromNav from './navReducers';
 import login, * as fromLogin from './loginReducers';
 import register, * as fromRegister from './registerReducers';
-import dashboard, * as fromDashboard from './dashboardReducers';
+// import dashboard, * as fromDashboard from './dashboardReducers';
 
 const AppReducer = combineReducers({
   nav,
   login,
   register,
-  dashboard
+  // dashboard
 });
 
 export default AppReducer;

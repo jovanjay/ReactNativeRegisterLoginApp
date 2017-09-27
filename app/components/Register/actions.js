@@ -3,7 +3,7 @@
  * https://github.com/reactjs/redux/issues/291
  */
 import * as actionTypes from '../../AppActionTypes';
-import {getLogin} from '../../reducers/loginReducer';
+import {getRegister} from '../../reducers/registerReducers';
 import Http from '../../AppHttp';
 import {
   AsyncStorage,
@@ -29,7 +29,7 @@ export const registerRequest = (name, type, email, password) => {
 }
 
 //Action creator for Login Error
-export const registerError(error) {
+export const registerError = (error) => {
   return {error, type: actionTypes.REGISTER_ERROR};
 }
 

@@ -9,7 +9,7 @@ import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 import LoginScreen from './components/Login';
 import MainScreen from './components/Main';
 import RegisterScreen from './components/Register';
-import DashBoardScreen from './components/DashBoard';
+import DashBoardScreen from './components/Dashboard';
 
 export const AppNavigator = StackNavigator({
   Login: { screen: LoginScreen },

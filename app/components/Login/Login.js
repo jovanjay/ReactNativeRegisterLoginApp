@@ -31,7 +31,7 @@ class Login extends Component {
         onChangeText={(password) => this.setState({password})}
         value={this.state.password}/>
         <Button
-          onPress={(this.state.email, this.state.password) => this.props.login}
+          onPress={this.props.dispatch(login())}
         />
       </View>
     );

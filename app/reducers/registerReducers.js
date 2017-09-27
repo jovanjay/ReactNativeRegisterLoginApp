@@ -1,14 +1,14 @@
 import * as actionTypes from '../AppActionTypes';
 
 //Reducer
-const DEFAULT_ STATE = Immutable.new({
+const DEFAULT_STATE = {
     onRegistering: false,
     error: '',
     name: '',
     type: '',
     email: '',
     password: '',
-  });
+  };
 
 export default function(state = DEFAULT_STATE, action) {
   switch (action.type) {

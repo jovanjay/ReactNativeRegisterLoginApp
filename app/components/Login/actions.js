@@ -3,7 +3,7 @@
  * https://github.com/reactjs/redux/issues/291
  */
 import * as actionTypes from '../../AppActionTypes';
-import {getLogin} from '../../reducers/loginReducer';
+import {getLogin} from '../../reducers/loginReducers';
 import Http from '../../AppHttp';
 import { NavigationActions } from 'react-navigation';
 import {
@@ -30,7 +30,7 @@ export const loginRequest = (email, password) => {
 }
 
 //Action creator for Login Error
-export const loginError(error) {
+export const loginError = (error) => {
   return {error, type: actionTypes.LOGIN_ERROR};
 }
 

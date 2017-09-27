@@ -8,8 +8,9 @@ import {
   Text,
   View,
 } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 
-class Dashboard extends Component {
+class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,11 +25,11 @@ class Dashboard extends Component {
         Welcome {this.state.message}
         </Text>
         <Button
-          title='Logout'
+          title='Login'
         />
       </View>
     );
   }
 }
 
-export default Dashboard;
+export default Main;
