@@ -1,10 +1,17 @@
 import * as actionTypes from '../AppActionTypes';
 
 //Reducer
-const DEFAULT_ STATE = {onLogin: false};
+const DEFAULT_ STATE = Immutable.new({
+    onLogging: false,
+    isLoggedIn: false,
+    error: '',
+    email: '',
+    password: '',
+  });
+
 export default function(state = DEFAULT_STATE, action) {
   switch (action.type) {
-    case actionTypes.ON_LOGIN:
+    case actionTypes.LOGIN_ATTEMPT:
       return state.merge({
         onLogging: true,
         email: action.email,
