@@ -3,7 +3,7 @@
  * https://github.com/reactjs/redux/issues/291
  */
 import * as actionTypes from '../../AppActionTypes';
-import {getLogin} from '../../reducers/loginReducers';
+import {getLogin, getIsLogin} from '../../reducers/loginReducers';
 import Http from '../../AppHttp';
 import { NavigationActions } from 'react-navigation';
 import {
@@ -15,7 +15,9 @@ import {
 export const loginSuccess = (reponse) => {
   return (dispatch, getState) => {
     const {onLogging} = getLogin(getState());
-    if(!onLogging)
+    const {isLoggedIn} = getIsLogin(getState());
+
+    if(!onLogging && isLoggedIn)
     {
         dispatch({error, type: actionTypes.LOGIN_SUCCESS});
         NavigationActions.navigate({ routeName: 'Dashboard' });
@@ -23,13 +25,13 @@ export const loginSuccess = (reponse) => {
   };
 }
 
-//Actions creator for Login Request
+//Actions creator for Login Request - not part of dispatch for synchronous calls
 export const loginRequest = (email, password) => {
   const user = {email: email, password: password};
   return { user, type: LOGIN_ATTEMPT };
 }
 
-//Action creator for Login Error
+//Action creator for Login Error - not part of dispatch for synchronous calls
 export const loginError = (error) => {
   return {error, type: actionTypes.LOGIN_ERROR};
 }
@@ -41,8 +43,9 @@ export const loginError = (error) => {
  */
 export const login = (user) => {
   return (dispatch, getState) => {
-    const {onLogging} = getLogin(getState())
-    if(!onLogging) {
+    const {onLogging} = getLogin(getState());
+    const {isLoggedIn} = getIsLogin(getState());
+    if(!onLogging && !isLoggedIn) {
 
       //call server for auth
       Http.post('/m/login', {
@@ -54,19 +57,16 @@ export const login = (user) => {
         if(reponse.status == 200 && response.status < 300)
         {
           try {
-            AsyncStorage.setItem('access_token', JSON.stringify(response.data.access_token));
-            AsyncStorage.setItem('expires_in', JSON.stringify(response.data.expires_in));
-            AsyncStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
-            AsyncStorage.setItem('token_type', JSON.stringify(response.data.token_type));
+            //TODO - Store Something here
             dispatch(loginSuccess(response));
           } catch (error) {
-            dispatch(loginError(response));
+            dispatch(loginError(error));
           }
         }
       })
       .catch(function (error) {
         console.error(error);
-        dispatch(loginError(response));
+        dispatch(loginError(error));
       });
 
       //tell app that is logging in

@@ -1,5 +1,6 @@
 /**
- * Application Nagivator user react-navigation
+ * Application Nagivator using react-navigation
+ * Stacks React Components to a Navigator
  */
 import React from 'react';
 import PropTypes from 'prop-types';

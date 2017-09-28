@@ -40,7 +40,7 @@ class Register extends Component {
         value={this.state.password}/>
 
         <Button
-          onPress={ this.props.login }
+          onPress={ this.props.login(this.state) }
         />
       </View>
     );

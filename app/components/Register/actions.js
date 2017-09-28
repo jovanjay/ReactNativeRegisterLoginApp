@@ -2,19 +2,21 @@
  * Action creator
  * https://github.com/reactjs/redux/issues/291
  */
+ import {
+   AsyncStorage,
+   XMLHttpRequest
+ } from 'react-native';
+
 import * as actionTypes from '../../AppActionTypes';
-import {getRegister} from '../../reducers/registerReducers';
+import { getRegister, getIsRegistered } from '../../reducers/registerReducers';
 import Http from '../../AppHttp';
-import {
-  AsyncStorage,
-  XMLHttpRequest
-} from 'react-native';
 
 //Actions creator for Success Login
 export const registerSuccess = (reponse) => {
   return (dispatch, getState) => {
     const {onRegistering} = getRegister(getState());
-    if(!onRegistering)
+    const {isRegistered} = getIsRegistered(getState());
+    if(!onRegistering && isRegistered)
     {
         dispatch({error, type: actionTypes.REGISTER_SUCCESS});
         NavigationActions.navigate({ routeName: 'Dashboard' });
@@ -40,8 +42,9 @@ export const registerError = (error) => {
  */
 export const register = (user) => {
   return (dispatch, getState) => {
-    const {onRegistering} = getRegister(getState())
-    if(!onRegistering) {
+    const {onRegistering} = getRegister(getState());
+    const {isRegistered} = getIsRegistered(getState());
+    if(!onRegistering && !isRegistered) {
 
       //tell app that is logging in
       dispatch(loginRequest(user.name, user.type, user.email, user.password));
@@ -63,13 +66,13 @@ export const register = (user) => {
             AsyncStorage.setItem('token_type', JSON.stringify(response.data.token_type));
             dispatch(registerSuccess(response));
           } catch (error) {
-            dispatch(registerError(response));
+            dispatch(registerError(error));
           }
         }
       })
       .catch(function (error) {
         console.error(error);
-        dispatch(registerError(response));
+        dispatch(registerError(error));
       });
     }
   };

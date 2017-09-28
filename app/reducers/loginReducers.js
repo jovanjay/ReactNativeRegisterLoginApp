@@ -9,7 +9,7 @@ const DEFAULT_STATE = {
     password: '',
   };
 
-export default function(state = DEFAULT_STATE, action) {
+export default function (state = DEFAULT_STATE, action) {
   switch (action.type) {
     case actionTypes.LOGIN_ATTEMPT:
       return state.merge({
@@ -37,7 +37,11 @@ export default function(state = DEFAULT_STATE, action) {
   }
 }
 
-//Selector - what is selector?????
+//we want to check what is the state are we right now
 export const getLogin = (state) => ({
   onLogging: state.onLogging
+});
+
+export const getIsLogin = (state) => ({
+  isLoggedIn: state.isLoggedIn
 });

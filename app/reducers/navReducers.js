@@ -16,34 +16,34 @@ const initialNavState = AppNavigator.router.getStateForAction(
 export default function (state = initialNavState, action) {
   let nextState;
   switch (action.type) {
-    case 'Main':
+    case actionTypes.NAV_MAIN:
       nextState = AppNavigator.router.getStateForAction(
         NavigationActions.back(),
         state
       );
       break;
 
-    case 'Login':
+    case actionTypes.NAV_LOGIN:
       nextState = AppNavigator.router.getStateForAction(
         NavigationActions.back(),
         state
       );
       break;
 
-    case 'Register':
+    case actionTypes.NAV_REGISTER:
       nextState = AppNavigator.router.getStateForAction(
         NavigationActions.back(),
         state
       );
       break;
 
-    case 'Dashboard':
+    case actionTypes.NAV_DASHBOARD:
       nextState = AppNavigator.router.getStateForAction(
         NavigationActions.back(),
         state
       );
 
-    case 'Logout':
+    case actionTypes.NAV_LOGOUT:
       nextState = AppNavigator.router.getStateForAction(
         NavigationActions.navigate({ routeName: 'Main' }),
         state

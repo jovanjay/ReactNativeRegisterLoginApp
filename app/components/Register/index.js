@@ -1,9 +1,9 @@
 /**
- * Container Component
+ * Connects the State Props and Dispatch Props to the React Component via REACT-REDUX
  */
 import Register from './Register';
 import {connect} from 'react-redux';
-import * as actions from './actions';
+import * as mapDispatchProps from './actions';
 import {getNav, getRegister} from '../../reducers';
 
 const mapStateProps = (state) => ({
@@ -11,4 +11,4 @@ const mapStateProps = (state) => ({
   ...getRegister(state),
 });
 
-export default connect(mapStateProps, actions)(Register);
+export default connect(mapStateProps, mapDispatchProps)(Register);

@@ -10,3 +10,9 @@ export const REGISTER_ERROR  = 'registerError'
 export const REGISTER_SUCCESS  = 'registerSuccess'
 
 export const ON_LOGOUT    = 'onLogout'
+
+export const NAV_MAIN = 'Main';
+export const NAV_LOGIN = 'Login';
+export const NAV_DASHBOARD = 'Dashboard';
+export const NAV_REGISTER = 'Register';
+export const NAV_LOGOUT = 'Logout';
