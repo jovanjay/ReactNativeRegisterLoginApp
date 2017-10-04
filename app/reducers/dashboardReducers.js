@@ -1,5 +1,6 @@
 import * as actionTypes from '../AppActionTypes';
 
-export default function (state = initialNavState, action) {
+
+export default function (state = {}, action) {
   return state;
 };

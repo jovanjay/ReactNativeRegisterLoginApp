@@ -26,6 +26,10 @@ class Main extends Component {
         </Text>
         <Button
           title='Login'
+          onPress={this.props.LoginScreen()}
+        />
+        <Button
+          title='Register'
         />
       </View>
     );

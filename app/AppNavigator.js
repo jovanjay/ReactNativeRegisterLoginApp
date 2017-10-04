@@ -13,8 +13,8 @@ import RegisterScreen from './components/Register';
 import DashBoardScreen from './components/Dashboard';
 
 export const AppNavigator = StackNavigator({
-  Login: { screen: LoginScreen },
   Main: { screen: MainScreen },
+  Login: { screen: LoginScreen },
   Register: { screen: RegisterScreen },
   Dashboard: { screen: DashBoardScreen },
 });

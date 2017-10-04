@@ -17,10 +17,7 @@ export default function (state = initialNavState, action) {
   let nextState;
   switch (action.type) {
     case actionTypes.NAV_MAIN:
-      nextState = AppNavigator.router.getStateForAction(
-        NavigationActions.back(),
-        state
-      );
+      nextState = state;
       break;
 
     case actionTypes.NAV_LOGIN:
