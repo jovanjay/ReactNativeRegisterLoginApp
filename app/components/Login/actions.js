@@ -43,8 +43,12 @@ export const loginError = (error) => {
  */
 export const login = (user) => {
   return (dispatch, getState) => {
+    //tell app that is logging in
+    dispatch(loginRequest(user.email, user.password));
+
     const {onLogging} = getLogin(getState());
     const {isLoggedIn} = getIsLogin(getState());
+
     if(!onLogging && !isLoggedIn) {
 
       //call server for auth
@@ -68,9 +72,6 @@ export const login = (user) => {
         console.error(error);
         dispatch(loginError(error));
       });
-
-      //tell app that is logging in
-      dispatch(loginRequest(user.email, user.password));
     }
   };
 }

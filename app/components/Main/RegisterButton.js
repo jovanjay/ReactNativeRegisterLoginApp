@@ -4,19 +4,19 @@ import { connect } from 'react-redux';
 import { Button } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 
-const RegisterButton = ({ RegisterScreen }) => (
+const RegisterButton = ({ registerScreen }) => (
   <Button
     title='Register'
-    onPress={ RegisterScreen }
+    onPress={ registerScreen }
   />
 );
 
 RegisterButton.propTypes = {
-  RegisterScreen: PropTypes.func.isRequired,
+  registerScreen: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  RegisterScreen: state.nav.RegisterScreen,
+  registerScreen: state.nav.RegisterScreen,
 });
 
 const mapDispatchToProps = dispatch => ({

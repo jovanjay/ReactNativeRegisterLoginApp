@@ -10,6 +10,9 @@ import {
 } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 
+import LoginButton from './LoginButton';
+import RegisterButton from './RegisterButton';
+
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -24,13 +27,8 @@ class Main extends Component {
         <Text>
         Welcome {this.state.message}
         </Text>
-        <Button
-          title='Login'
-          onPress={this.props.LoginScreen()}
-        />
-        <Button
-          title='Register'
-        />
+        <LoginButton/>
+        <RegisterButton/>
       </View>
     );
   }

@@ -3,15 +3,15 @@
  */
 import Main from './Main';
 import {connect} from 'react-redux';
-import * as actions from './actions';
+import * as mapDispatchProps from './actions';
 
 const login = (state) => {
 
 }
 
 const mapStateProps = (state) => ({
-  ...login(state),
+  ...login(state)
 });
 
 
-export default connect(mapStateProps, actions)(Main);
+export default connect(mapStateProps, mapDispatchProps)(Main);

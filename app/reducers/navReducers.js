@@ -55,3 +55,7 @@ export default function (state = initialNavState, action) {
   // Simply return the original `state` if `nextState` is null or undefined.
   return nextState || state;
 }
+
+export const getNav = (state) => ({
+  
+});
