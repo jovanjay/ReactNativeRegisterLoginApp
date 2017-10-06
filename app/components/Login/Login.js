@@ -36,7 +36,10 @@ class Login extends Component {
         value={this.state.password}/>
         <Button
           title="Login"
-          // onPress={(this.state) => this.props.login()}
+          onPress={this.props.login({
+            email : this.state.email,
+            password : this.state.password
+          })}
         />
       </View>
     );

@@ -42,10 +42,11 @@ export const loginError = (error) => {
  * this.props.login(); or this.props.dispatch(login());
  */
 export const login = (user) => {
+  console.log('Login');
   return (dispatch, getState) => {
     //tell app that is logging in
     dispatch(loginRequest(user.email, user.password));
-
+    console.log(user);
     const {onLogging} = getLogin(getState());
     const {isLoggedIn} = getIsLogin(getState());
 

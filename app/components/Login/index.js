@@ -2,15 +2,19 @@
  * Container Component
  */
 import Login from './Login';
-import {connect} from 'react-redux';
-import * as mapDispatchProps from './actions';
+import * as actions from './actions';
 import {getNav, getLogin} from '../../reducers';
 
 //Map states to props - because we want to know what
 //state are we currently in right now
-const mapStateProps = (state) => ({
+const mapStateProps = state => ({
   // ...getNav(state),
   // ...getLogin(state),
+  login: getLogin(state)
 });
 
-export default connect(mapStateProps, mapDispatchProps)(Login);
+const mapDispatchToProps = dispatch => ({
+  login: actions.login(user)
+});
+
+export default connect(mapStateProps, mapDispatchToProps)(Login);
