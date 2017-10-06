@@ -8,6 +8,8 @@ import {
   Text,
   View,
 } from 'react-native';
+import styles from '../../AppStyles';
+
 
 class Login extends Component {
   constructor(props) {
@@ -23,16 +25,18 @@ class Login extends Component {
     return(
       <View>
         <TextInput
+        style={styles._textInput}
         title='Email'
         onChangeText={(email) => this.setState({email})}
         value={this.state.email}/>
         <TextInput
+        style={styles._textInput}
         title='password'
         onChangeText={(password) => this.setState({password})}
         value={this.state.password}/>
         <Button
           title="Login"
-          onPress={(this.state) => this.props.login({this.state})}
+          // onPress={(this.state) => this.props.login()}
         />
       </View>
     );

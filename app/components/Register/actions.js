@@ -11,7 +11,7 @@ import * as actionTypes from '../../AppActionTypes';
 import { getRegister, getIsRegistered } from '../../reducers/registerReducers';
 import Http from '../../AppHttp';
 
-//Actions creator for Success Login
+//Actions creator for Success Register
 export const registerSuccess = (reponse) => {
   return (dispatch, getState) => {
     const {onRegistering} = getRegister(getState());
@@ -24,13 +24,13 @@ export const registerSuccess = (reponse) => {
   };
 }
 
-//Actions creator for Login Request
+//Actions creator for Register Request
 export const registerRequest = (name, type, email, password) => {
   const user = {name: name, type: type, email: email, password: password};
   return { user, type: REGISTER_ATTEMPT };
 }
 
-//Action creator for Login Error
+//Action creator for Register Error
 export const registerError = (error) => {
   return {error, type: actionTypes.REGISTER_ERROR};
 }
