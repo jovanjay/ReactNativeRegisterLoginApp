@@ -8,7 +8,7 @@ import { AppNavigator } from '../AppNavigator';
 /**
  * Main Navigation Reducer
  */
-import nav from './navReducers';
+import nav, * as NavSelector from './navReducers';
 
 /**
  * Component Reducers / Selectors (*)
@@ -22,7 +22,10 @@ const AppReducer = combineReducers({
   nav,
   login,
   register,
-  dashboard
+  dashboard,
+  getLogin : LoginSelector.getLogin,
+  getIsLogin : LoginSelector.getIsLogin,
+  getNav : NavSelector.getNav,
 });
 
 export default AppReducer;

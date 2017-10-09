@@ -13,6 +13,7 @@ import {
 
 //Actions creator for Success Login
 export const loginSuccess = (reponse) => {
+  console.log('login success dispatched');
   return (dispatch, getState) => {
     const {onLogging} = getLogin(getState());
     const {isLoggedIn} = getIsLogin(getState());
@@ -27,8 +28,9 @@ export const loginSuccess = (reponse) => {
 
 //Actions creator for Login Request - not part of dispatch for synchronous calls
 export const loginRequest = (email, password) => {
+  console.log('login request fired');
   const user = {email: email, password: password};
-  return { user, type: LOGIN_ATTEMPT };
+  return { user, type: actionTypes.LOGIN_ATTEMPT };
 }
 
 //Action creator for Login Error - not part of dispatch for synchronous calls
@@ -43,14 +45,16 @@ export const loginError = (error) => {
  */
 export const login = (user) => {
   console.log('Login');
-  return (dispatch, getState) => {
-    //tell app that is logging in
-    dispatch(loginRequest(user.email, user.password));
-    console.log(user);
-    const {onLogging} = getLogin(getState());
-    const {isLoggedIn} = getIsLogin(getState());
+  console.log(user);
+  return (dispatch, state) => {
+    console.log(state);
+    // const { onLogging } = getLogin(state);
+    // const { isLoggedIn } = getIsLogin(state);
 
     if(!onLogging && !isLoggedIn) {
+
+      //tell app that is logging in
+      dispatch(loginRequest(user.email, user.password));
 
       //call server for auth
       Http.post('/m/login', {

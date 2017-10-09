@@ -3,18 +3,19 @@
  */
 import Login from './Login';
 import * as actions from './actions';
-import {getNav, getLogin} from '../../reducers';
+import { connect } from 'react-redux';
+import { getNav, getLogin, getIsLogin } from '../../reducers';
 
 //Map states to props - because we want to know what
 //state are we currently in right now
 const mapStateProps = state => ({
-  // ...getNav(state),
-  // ...getLogin(state),
-  login: getLogin(state)
+  ...getNav(state),
+  ...getLogin(state),
+  ...getIsLogin(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  login: actions.login(user)
+const mapDispatchToProps = (dispatch , state) => ({
+  login: actions.login
 });
 
 export default connect(mapStateProps, mapDispatchToProps)(Login);
