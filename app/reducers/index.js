@@ -8,14 +8,14 @@ import { AppNavigator } from '../AppNavigator';
 /**
  * Main Navigation Reducer
  */
-import nav, * as NavSelector from './navReducers';
+import nav from './navReducers';
 
 /**
  * Component Reducers / Selectors (*)
  */
-import login, * as LoginSelector from './loginReducers';
-import register, * as RegisterSelector from './registerReducers';
-import dashboard, * as DashboardSelector from './dashboardReducers';
+import login from './loginReducers';
+import register from './registerReducers';
+import dashboard from './dashboardReducers';
 
 //Combine all reducers
 const AppReducer = combineReducers({

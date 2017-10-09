@@ -43,10 +43,11 @@ export const loginError = (error) => {
  * this.props.login(); or this.props.dispatch(login());
  */
 export const login = (user) => {
-  console.log('Login');
-  console.log(user);
   return (dispatch, getState) => {
-    console.log(state);
+
+    console.log('Login');
+    console.log(user);
+
     const { onLogging } = getLogin(getState());
     const { isLoggedIn } = getIsLogin(getState());
 
