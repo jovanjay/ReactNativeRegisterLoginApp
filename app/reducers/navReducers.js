@@ -56,6 +56,9 @@ export default function (state = initialNavState, action) {
   return nextState || state;
 }
 
+export const getState = (state) => ({
+  state : state
+});
+
 export const getNav = (state) => ({
-  
 });

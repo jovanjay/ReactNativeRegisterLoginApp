@@ -23,9 +23,6 @@ const AppReducer = combineReducers({
   login,
   register,
   dashboard,
-  getLogin : LoginSelector.getLogin,
-  getIsLogin : LoginSelector.getIsLogin,
-  getNav : NavSelector.getNav,
 });
 
 export default AppReducer;

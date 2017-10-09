@@ -13,22 +13,22 @@ const DEFAULT_STATE = Map({
 export default function (state = DEFAULT_STATE, action) {
   switch (action.type) {
     case actionTypes.LOGIN_ATTEMPT:
-      state.set('onLogging',true);
-      state.set('email', action.email);
-      state.set('password', action.password);
-      return state;
+        state.set('onLogging', true);
+        state.set('email', action.email);
+        state.set('password', action.password);
+        return state;
       break;
 
     case actionTypes.LOGIN_ERROR:
-      state.set('onLogging', false);
-      state.set('error', action.error);
-      return state;
+        state.set('onLogging', false);
+        state.set('error', action.error);
+        return state;
       break;
 
     case actionTypes.LOGIN_SUCCESS:
-      state.set('onLogging', false);
-      state.set('isLoggedIn', true);
-      return state;
+        state.set('onLogging', false);
+        state.set('isLoggedIn', true);
+        return state;
       break;
 
     default:
@@ -38,9 +38,9 @@ export default function (state = DEFAULT_STATE, action) {
 
 //we want to check what is the state are we right now
 export const getLogin = (state) => ({
-  // onLogging: state.onLogging
+  onLogging: state.onLogging
 });
 
 export const getIsLogin = (state) => ({
-  // isLoggedIn: state.isLoggedIn
+  isLoggedIn: state.isLoggedIn
 });

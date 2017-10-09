@@ -17,7 +17,6 @@ export const loginSuccess = (reponse) => {
   return (dispatch, getState) => {
     const {onLogging} = getLogin(getState());
     const {isLoggedIn} = getIsLogin(getState());
-
     if(!onLogging && isLoggedIn)
     {
         dispatch({error, type: actionTypes.LOGIN_SUCCESS});
@@ -46,10 +45,10 @@ export const loginError = (error) => {
 export const login = (user) => {
   console.log('Login');
   console.log(user);
-  return (dispatch, state) => {
+  return (dispatch, getState) => {
     console.log(state);
-    // const { onLogging } = getLogin(state);
-    // const { isLoggedIn } = getIsLogin(state);
+    const { onLogging } = getLogin(getState());
+    const { isLoggedIn } = getIsLogin(getState());
 
     if(!onLogging && !isLoggedIn) {
 
