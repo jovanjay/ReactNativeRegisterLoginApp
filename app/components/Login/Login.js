@@ -1,5 +1,5 @@
 /**
- * Presentational Component
+ * Login Component
  */
 import React, {Component} from 'react';
 import {
@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import styles from '../../AppStyles';
-
+import LoginButton from './LoginButton';
 
 class Login extends Component {
   constructor(props) {
@@ -20,7 +20,6 @@ class Login extends Component {
     };
   }
 
- //TODO - not sure if correct approach
   render() {
     return(
       <View>
@@ -29,15 +28,17 @@ class Login extends Component {
         title='Email'
         onChangeText={(email) => this.setState({email})}
         value={this.state.email}/>
+
         <TextInput
         style={styles._textInput}
         title='password'
         onChangeText={(password) => this.setState({password})}
         value={this.state.password}/>
-        <Button
-          title="Login"
-          onPress={this.props.login(this.state)}
-        />
+
+        <LoginButton 
+          email={this.state.email}
+          password={this.state.password}/>
+
       </View>
     );
   }
