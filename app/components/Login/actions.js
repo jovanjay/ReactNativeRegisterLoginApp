@@ -43,7 +43,7 @@ export const login = (email, password) => {
   return dispatch => {
 
     //tell app that is logging in
-    loginRequest(email, password);
+    dispatch(loginRequest(email, password));
 
     //call server for auth
     Http.post('/m/login', {
@@ -56,16 +56,15 @@ export const login = (email, password) => {
       {
         try {
           //TODO - Store Something here
-          dispatch(loginSuccess(response));
+          loginSuccess(response);
         } catch (error) {
-          dispatch(loginError(error));
+          loginError(error);
         }
       }
     })
     .catch(function (error) {
       console.error(error);
-      dispatch(loginError(error));
+      loginError(error);
     });
-
   };
 }
