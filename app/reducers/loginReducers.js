@@ -38,9 +38,9 @@ export default function (state = DEFAULT_STATE, action) {
 
 //we want to check what is the state are we right now
 export const getLogin = (state) => ({
-  onLogging: state.login.onLogging
+  onLogging: state.get('onLogging')
 });
 
 export const getIsLogin = (state) => ({
-  isLoggedIn: state.login.isLoggedIn
+  isLoggedIn: state.get('isLoggedIn')
 });

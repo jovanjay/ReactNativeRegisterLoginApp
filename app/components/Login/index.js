@@ -8,12 +8,12 @@ import { connect } from 'react-redux';
 
 //Map states to props - because we want to know what
 //state are we currently in right now
-const mapStateProps = (state) => ({
-  login : state.login
+const mapStateProps = state => ({
+  login : state.login.login
 });
 
-const mapDispatchToProps = (dispatch , state) => ({
+const mapDispatchToProps = dispatch => ({
   login: actions.login
 });
 
-export default connect(mapStateProps, mapDispatchToProps)(Login);
+export default connect(mapStateProps,mapDispatchToProps)(Login);

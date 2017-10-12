@@ -43,40 +43,42 @@ export const loginError = (error) => {
  * this.props.login(); or this.props.dispatch(login());
  */
 export const login = (user) => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
 
+    //tell app that is logging in
+    loginRequest(user.email, user.password);
+    //
     console.log('Login');
-    console.log(user);
-
+    // console.log(state);
+    //
     const { onLogging } = getLogin(getState());
     const { isLoggedIn } = getIsLogin(getState());
-
+    console.log(isLoggedIn);
+    console.log(onLogging);
     if(!onLogging && !isLoggedIn) {
-
-      //tell app that is logging in
-      dispatch(loginRequest(user.email, user.password));
-
-      //call server for auth
-      Http.post('/m/login', {
-        'email' : user.email,
-        'password' : user.password,
-        'type' : 0
-      })
-      .then(response => {
-        if(reponse.status == 200 && response.status < 300)
-        {
-          try {
-            //TODO - Store Something here
-            dispatch(loginSuccess(response));
-          } catch (error) {
-            dispatch(loginError(error));
-          }
-        }
-      })
-      .catch(function (error) {
-        console.error(error);
-        dispatch(loginError(error));
-      });
+      console.log('foo');
+    //
+    //   //call server for auth
+    //   Http.post('/m/login', {
+    //     'email' : user.email,
+    //     'password' : user.password,
+    //     'type' : 0
+    //   })
+    //   .then(response => {
+    //     if(reponse.status == 200 && response.status < 300)
+    //     {
+    //       try {
+    //         //TODO - Store Something here
+    //         dispatch(loginSuccess(response));
+    //       } catch (error) {
+    //         dispatch(loginError(error));
+    //       }
+    //     }
+    //   })
+    //   .catch(function (error) {
+    //     console.error(error);
+    //     dispatch(loginError(error));
+    //   });
     }
   };
 }
