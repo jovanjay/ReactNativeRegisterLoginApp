@@ -25,6 +25,7 @@ export default function (state = initialNavState, action) {
         NavigationActions.back(),
         state
       );
+      console.log('Route to login');
       break;
 
     case actionTypes.NAV_REGISTER:

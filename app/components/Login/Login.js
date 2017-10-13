@@ -9,7 +9,6 @@ import {
   View,
 } from 'react-native';
 import styles from '../../AppStyles';
-import LoginButton from './LoginButton';
 
 class Login extends Component {
   constructor(props) {
@@ -23,6 +22,7 @@ class Login extends Component {
   render() {
     return(
       <View>
+        <Text>Test :</Text>
         <TextInput
         style={styles._textInput}
         title='Email'
@@ -35,9 +35,10 @@ class Login extends Component {
         onChangeText={(password) => this.setState({password})}
         value={this.state.password}/>
 
-        <LoginButton 
-          email={this.state.email}
-          password={this.state.password}/>
+        <Button
+          title='Login'
+          onPress={this.props.loginAttempt(this.state.email,this.state.password)}
+        />
 
       </View>
     );

@@ -41,3 +41,7 @@ export default function (state = DEFAULT_STATE, action) {
       return state;
   }
 }
+
+export const getIsLogging = (state) => ({
+  onLogging: state.onLogging
+});
