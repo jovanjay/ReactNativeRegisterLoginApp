@@ -14,7 +14,6 @@ import {
 
 //Actions creator for Success Login
 export const loginSuccess = (reponse) => {
-  console.log('login success dispatched');
   return dispatch => {
     dispatch({error, type: actionTypes.LOGIN_SUCCESS});
     NavigationActions.navigate({ routeName: 'Dashboard' });
@@ -24,7 +23,6 @@ export const loginSuccess = (reponse) => {
 //Actions creator for Login Request -
 //not part of dispatch for synchronous calls
 export const loginRequest = (email, password) => {
-  console.log('login request fired');
   const user = {email: email, password: password};
   return {
       user,
@@ -35,7 +33,6 @@ export const loginRequest = (email, password) => {
 //Action creator for Login Error -
 //not part of dispatch for synchronous calls
 export const loginError = (error) => {
-  console.log('An error occured : ' + error);
   return {error, type: actionTypes.LOGIN_ERROR};
 }
 
@@ -44,37 +41,28 @@ export const loginError = (error) => {
  * call this on the component as :
  * this.props.login(); or this.props.dispatch(login());
  */
-export const loginAttempt = (email, password) => {
+export const login = (email, password) => {
   return (dispatch, getState) => {
-
     //tell app that is logging in
-    dispatch(loginRequest(email, password));
-
-    console.log(email,password);
-    const { onLogging } = getIsLogging(getState());
-    //
-    // console.log(getState());
-    // console.log(onLogging);
-    //
-    // //call server for auth
-    // Http.post('/m/login', {
-    //   'email' : email,
-    //   'password' : password,
-    //   'type' : 0
-    // })
-    // .then(response => {
-    //   if(reponse.status == 200 && response.status < 300)
-    //   {
-    //     try {
-    //       //TODO - Store Something here
-    //       loginSuccess(response);
-    //     } catch (error) {
-    //       loginError(error);
-    //     }
-    //   }
-    // })
-    // .catch(function (error) {
-    //   loginError(error);
-    // });
+      dispatch(loginRequest(email, password));
+      //call server for auth
+      Http.post('/m/login', {
+        'email' : email,
+        'password' : password,
+        'type' : 0
+      })
+      .then(response => {
+        if(reponse.status == 200 && response.status < 300)
+        {
+          try {
+            loginSuccess(response);
+          } catch (error) {
+            loginError(error);
+          }
+        }
+      })
+      .catch(function (error) {
+        loginError(error);
+      }); 
   };
 }

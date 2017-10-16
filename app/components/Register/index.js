@@ -7,12 +7,12 @@ import * as actions from './actions';
 import {getNav, getRegister} from '../../reducers';
 
 const mapStateProps = (state) => ({
-  // ...getNav(state),
-  // ...getRegister(state),
+  registerAttempt: state.registerReducer.registerAttempt
 });
 
 const mapDispatchToProps = dispatch => ({
-  register: actions.register
+  registerAttempt: (name,email,password) => 
+    dispatch(actions.register(name,email,password))
 });
 
 export default connect(mapStateProps, mapDispatchToProps)(Register);

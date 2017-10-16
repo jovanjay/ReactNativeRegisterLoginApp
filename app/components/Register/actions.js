@@ -27,7 +27,7 @@ export const registerSuccess = (reponse) => {
 //Actions creator for Register Request
 export const registerRequest = (name, type, email, password) => {
   const user = {name: name, type: type, email: email, password: password};
-  return { user, type: REGISTER_ATTEMPT };
+  return { user, type: actionTypes.REGISTER_ATTEMPT };
 }
 
 //Action creator for Register Error
@@ -42,38 +42,45 @@ export const registerError = (error) => {
  */
 export const register = (user) => {
   return (dispatch, getState) => {
-    const {onRegistering} = getRegister(getState());
-    const {isRegistered} = getIsRegistered(getState());
-    if(!onRegistering && !isRegistered) {
+    
+      if(!getState().registerReducer.isRegistered)
+      {
+        console.log('woot');
+      }
 
       //tell app that is logging in
-      dispatch(loginRequest(user.name, user.type, user.email, user.password));
+      dispatch(registerRequest(user.name, user.type, user.email, user.password));
+      console.log(getState());
+      if(getState().registerReducer)
+      {
+        console.log(getState().registerReducer.onRegistering);
+        console.log('registering');
+      }
 
       //call server for auth
-      Http.post('/m/register', {
-        'name' : user.name,
-        'email' : user.email,
-        'password' : user.password,
-        'type' : user.type
-      })
-      .then(response => {
-        if(reponse.status == 200 && response.status < 300)
-        {
-          try {
-            AsyncStorage.setItem('access_token', JSON.stringify(response.data.access_token));
-            AsyncStorage.setItem('expires_in', JSON.stringify(response.data.expires_in));
-            AsyncStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
-            AsyncStorage.setItem('token_type', JSON.stringify(response.data.token_type));
-            dispatch(registerSuccess(response));
-          } catch (error) {
-            dispatch(registerError(error));
-          }
-        }
-      })
-      .catch(function (error) {
-        console.error(error);
-        dispatch(registerError(error));
-      });
-    }
+      // Http.post('/m/register', {
+      //   'name' : user.name,
+      //   'email' : user.email,
+      //   'password' : user.password,
+      //   'type' : user.type
+      // })
+      // .then(response => {
+      //   if(reponse.status == 200 && response.status < 300)
+      //   {
+      //     try {
+      //       AsyncStorage.setItem('access_token', JSON.stringify(response.data.access_token));
+      //       AsyncStorage.setItem('expires_in', JSON.stringify(response.data.expires_in));
+      //       AsyncStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
+      //       AsyncStorage.setItem('token_type', JSON.stringify(response.data.token_type));
+      //       dispatch(registerSuccess(response));
+      //     } catch (error) {
+      //       dispatch(registerError(error));
+      //     }
+      //   }
+      // })
+      // .catch(function (error) {
+      //   console.error(error);
+      //   dispatch(registerError(error));
+      // });
   };
 }

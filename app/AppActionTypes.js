@@ -7,6 +7,7 @@ export const LOGIN_SUCCESS = 'loginSuccess';
 export const ON_LOGOUT    = 'onLogout'
 
 export const ON_REGISTER  = 'onRegister'
+export const REGISTER_ATTEMPT = 'registerAttempt'
 export const REGISTER_ERROR  = 'registerError'
 export const REGISTER_SUCCESS  = 'registerSuccess'
 

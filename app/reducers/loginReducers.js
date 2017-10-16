@@ -1,8 +1,8 @@
-import { Map } from 'immutable';
+import Immutable from 'immutable';
 import * as actionTypes from '../AppActionTypes';
 
 //Reducer
-const DEFAULT_STATE = Map({
+const DEFAULT_STATE = new Immutable.Map({
   onLogging: false,
   isLoggedIn: false,
   error: '',
@@ -13,28 +13,25 @@ const DEFAULT_STATE = Map({
 export default function (state = DEFAULT_STATE, action) {
   switch (action.type) {
     case actionTypes.LOGIN_ATTEMPT:
-        state.merge({
+        return state.merge({
           onLogging : true,
-          email : action.email,
-          password : action.password
+          email : action.user.email,
+          password : action.user.password,
         });
-        return state;
       break;
 
     case actionTypes.LOGIN_ERROR:
-        state.merge({
+        return state.merge({
           onLogging : true,
-          error: action.error
+          error: action.error,
         });
-        return state;
       break;
 
     case actionTypes.LOGIN_SUCCESS:
-        state.merge({
+        return state.merge({
           onLogging: false,
-          isLoggedIn: true
+          isLoggedIn: true,
         });
-        return state;
       break;
 
     default:
@@ -43,5 +40,5 @@ export default function (state = DEFAULT_STATE, action) {
 }
 
 export const getIsLogging = (state) => ({
-  onLogging: state.onLogging
-});
+    onLogging: state.loginReducer.onLogging
+  });

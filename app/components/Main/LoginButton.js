@@ -16,7 +16,7 @@ LoginButton.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  loginScreen: state.nav.loginScreen,
+  loginScreen: state.navReducer.loginScreen,
 });
 
 const mapDispatchToProps = dispatch => ({

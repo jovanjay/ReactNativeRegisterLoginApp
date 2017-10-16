@@ -1,7 +1,8 @@
+import Immutable from 'immutable';
 import * as actionTypes from '../AppActionTypes';
 
 //Reducer
-const DEFAULT_STATE = {
+const DEFAULT_STATE = new Immutable.Map({
     onRegistering: false,
     isRegistered: false,
     error: '',
@@ -9,7 +10,7 @@ const DEFAULT_STATE = {
     type: '',
     email: '',
     password: '',
-  };
+  });
 
 export default function (state = DEFAULT_STATE, action) {
   switch (action.type) {
@@ -17,10 +18,10 @@ export default function (state = DEFAULT_STATE, action) {
       return state.merge({
         onRegistering: true,
         isRegistered: false,
-        name: action.name,
-        type: action.type,
-        email: action.email,
-        password: action.password
+        name: action.user.name,
+        type: action.user.type,
+        email: action.user.email,
+        password: action.user.password
       });
       break;
 

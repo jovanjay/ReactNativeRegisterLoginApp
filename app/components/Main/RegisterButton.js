@@ -16,7 +16,7 @@ RegisterButton.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  registerScreen: state.nav.RegisterScreen,
+  registerScreen: state.navReducer.RegisterScreen,
 });
 
 const mapDispatchToProps = dispatch => ({

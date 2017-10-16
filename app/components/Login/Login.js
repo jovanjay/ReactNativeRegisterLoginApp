@@ -22,7 +22,6 @@ class Login extends Component {
   render() {
     return(
       <View>
-        <Text>Test :</Text>
         <TextInput
         style={styles._textInput}
         title='Email'
@@ -37,9 +36,8 @@ class Login extends Component {
 
         <Button
           title='Login'
-          onPress={this.props.loginAttempt(this.state.email,this.state.password)}
+          onPress={() => this.props.loginAttempt(this.state.email,this.state.password)}
         />
-
       </View>
     );
   }
