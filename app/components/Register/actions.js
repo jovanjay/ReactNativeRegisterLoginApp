@@ -11,6 +11,12 @@ import * as actionTypes from '../../AppActionTypes';
 import { getRegister, getIsRegistered } from '../../reducers/registerReducers';
 import Http from '../../AppHttp';
 
+import {
+  APP_URL,
+  BASIC_AUTH_UNAME,
+  BASIC_AUTH_PASSWORD
+} from 'react-native-dotenv';
+
 //Actions creator for Success Register
 export const registerSuccess = (reponse) => {
   return (dispatch, getState) => { 
@@ -57,29 +63,35 @@ export const register = (user) => {
       dispatch(registerRequest(user.name, user.type, user.email, user.password));
 
       //call server for auth
-      // Http.post('/m/register', {
-      //   'name' : user.name,
-      //   'email' : user.email,
-      //   'password' : user.password,
-      //   'type' : user.type
-      // })
-      // .then(response => {
-      //   if(reponse.status == 200 && response.status < 300)
-      //   {
-      //     try {
-      //       AsyncStorage.setItem('access_token', JSON.stringify(response.data.access_token));
-      //       AsyncStorage.setItem('expires_in', JSON.stringify(response.data.expires_in));
-      //       AsyncStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
-      //       AsyncStorage.setItem('token_type', JSON.stringify(response.data.token_type));
-      //       dispatch(registerSuccess(response));
-      //     } catch (error) {
-      //       dispatch(registerError(error));
-      //     }
-      //   }
-      // })
-      // .catch(function (error) {
-      //   console.error(error);
-      //   dispatch(registerError(error));
-      // });
+      Http.post('/m/register', {
+        'name' : user.name,
+        'email' : user.email,
+        'password' : user.password,
+        'type' : user.type
+      })
+      .then(response => {
+        dispatch(registerRequest(user.name, user.type, user.email, user.password));
+        if(reponse.status == 200 && response.status < 300)
+        {
+          try {
+            AsyncStorage.setItem('access_token', JSON.stringify(response.data.access_token));
+            AsyncStorage.setItem('expires_in', JSON.stringify(response.data.expires_in));
+            AsyncStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
+            AsyncStorage.setItem('token_type', JSON.stringify(response.data.token_type));
+            dispatch(registerSuccess(response));
+
+          } catch (error) {
+            dispatch(registerError(error));
+          }
+        }
+        else{
+
+        }
+      })
+      .catch(function (error) {
+        console.error(error);
+        dispatch(registerError(error));
+        console.log(getState().registerReducer.error);
+      });
   };
 }
