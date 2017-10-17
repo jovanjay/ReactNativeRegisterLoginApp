@@ -13,12 +13,12 @@ import Http from '../../AppHttp';
 
 //Actions creator for Success Register
 export const registerSuccess = (reponse) => {
-  return (dispatch, getState) => {
+  return (dispatch, getState) => { 
     const {onRegistering} = getRegister(getState());
     const {isRegistered} = getIsRegistered(getState());
     if(!onRegistering && isRegistered)
     {
-        dispatch({error, type: actionTypes.REGISTER_SUCCESS});
+        dispatch({reponse, type: actionTypes.REGISTER_SUCCESS});
         NavigationActions.navigate({ routeName: 'Dashboard' });
     }
   };
@@ -26,7 +26,12 @@ export const registerSuccess = (reponse) => {
 
 //Actions creator for Register Request
 export const registerRequest = (name, type, email, password) => {
-  const user = {name: name, type: type, email: email, password: password};
+  const user = {
+    name: name, 
+    type: type, 
+    email: email, 
+    password: password
+  };
   return { user, type: actionTypes.REGISTER_ATTEMPT };
 }
 
@@ -36,26 +41,20 @@ export const registerError = (error) => {
 }
 
 /**
- * The main login action
+ * The main register action
  * call this on the component as :
  * this.props.login(); or this.props.dispatch(login());
  */
 export const register = (user) => {
   return (dispatch, getState) => {
     
-      if(!getState().registerReducer.isRegistered)
-      {
-        console.log('woot');
-      }
+      const { registerReducer } = getState();
+      console.log(registerReducer);
+      console.log(registerReducer.isRegistered);
+      console.log(registerReducer.onRegistering);
 
-      //tell app that is logging in
+      //tell app that is registering in
       dispatch(registerRequest(user.name, user.type, user.email, user.password));
-      console.log(getState());
-      if(getState().registerReducer)
-      {
-        console.log(getState().registerReducer.onRegistering);
-        console.log('registering');
-      }
 
       //call server for auth
       // Http.post('/m/register', {
