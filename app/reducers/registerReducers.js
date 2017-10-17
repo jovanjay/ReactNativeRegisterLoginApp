@@ -47,9 +47,9 @@ export default function (state = DEFAULT_STATE, action) {
 
 //Selector - what is selector?????
 export const getRegister = (state) => ({
-  onRegistering: state.onRegistering
+  onRegistering: state.registerReducer.get('onRegistering')
 });
 
 export const getIsRegistered = (state) => ({
-  isRegistered: state.isRegistered
+  isRegistered: state.registerReducer.get('isRegistered')
 });

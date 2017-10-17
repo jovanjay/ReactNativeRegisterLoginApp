@@ -55,10 +55,11 @@ export const registerError = (error) => {
 export const register = (user) => {
   return (dispatch, getState) => {
 
-      const { registerReducer } = getState();
-    
+      // const { registerReducer } = getState(); //other way of implementing it
+      const {onRegistering} = getRegister(getState());
+
       //using get() since we are using immutable
-      if(!registerReducer.get('onRegistering'))
+      if(!onRegistering)
       {
         //tell app that is registering in
         dispatch(registerRequest(user.name, user.type, user.email, user.password));

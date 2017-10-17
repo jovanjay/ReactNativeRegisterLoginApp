@@ -40,5 +40,5 @@ export default function (state = DEFAULT_STATE, action) {
 }
 
 export const getIsLogging = (state) => ({
-    onLogging: state.loginReducer.onLogging
-  });
+  onLogging: state.loginReducer.get('onLogging')
+});
