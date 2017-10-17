@@ -2,6 +2,7 @@
  * Action creator
  * https://github.com/reactjs/redux/issues/291
  */
+import Immutable from 'immutable';
 import * as actionTypes from '../../AppActionTypes';
 import { getIsLogging } from '../../reducers/loginReducers';
 import Http from '../../AppHttp';
@@ -43,7 +44,10 @@ export const loginError = (error) => {
  */
 export const login = (email, password) => {
   return (dispatch, getState) => {
-    //tell app that is logging in
+    const { loginReducer } = getState();
+    if(!loginReducer.get('onLogging'))
+    {
+      //tell app that is logging in
       dispatch(loginRequest(email, password));
       //call server for auth
       Http.post('/m/login', {
@@ -63,6 +67,7 @@ export const login = (email, password) => {
       })
       .catch(function (error) {
         loginError(error);
-      }); 
+      });
+    }
   };
 }

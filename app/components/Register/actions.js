@@ -2,6 +2,7 @@
  * Action creator
  * https://github.com/reactjs/redux/issues/291
  */
+import Immutable from 'immutable';
  import {
    AsyncStorage,
    XMLHttpRequest
@@ -53,45 +54,43 @@ export const registerError = (error) => {
  */
 export const register = (user) => {
   return (dispatch, getState) => {
-    
+
       const { registerReducer } = getState();
-      console.log(registerReducer);
-      console.log(registerReducer.isRegistered);
-      console.log(registerReducer.onRegistering);
-
-      //tell app that is registering in
-      dispatch(registerRequest(user.name, user.type, user.email, user.password));
-
-      //call server for auth
-      Http.post('/m/register', {
-        'name' : user.name,
-        'email' : user.email,
-        'password' : user.password,
-        'type' : user.type
-      })
-      .then(response => {
+    
+      //using get() since we are using immutable
+      if(!registerReducer.get('onRegistering'))
+      {
+        //tell app that is registering in
         dispatch(registerRequest(user.name, user.type, user.email, user.password));
-        if(reponse.status == 200 && response.status < 300)
-        {
-          try {
-            AsyncStorage.setItem('access_token', JSON.stringify(response.data.access_token));
-            AsyncStorage.setItem('expires_in', JSON.stringify(response.data.expires_in));
-            AsyncStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
-            AsyncStorage.setItem('token_type', JSON.stringify(response.data.token_type));
-            dispatch(registerSuccess(response));
-
-          } catch (error) {
-            dispatch(registerError(error));
+      
+        // call server for auth
+        Http.post('/m/register', {
+          'name' : user.name,
+          'email' : user.email,
+          'password' : user.password,
+          'type' : user.type
+        })
+        .then(response => {
+          if(reponse.status == 200 && response.status < 300)
+          {
+            try {
+              AsyncStorage.setItem('access_token', JSON.stringify(response.data.access_token));
+              AsyncStorage.setItem('expires_in', JSON.stringify(response.data.expires_in));
+              AsyncStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
+              AsyncStorage.setItem('token_type', JSON.stringify(response.data.token_type));
+              dispatch(registerSuccess(response));
+            } catch (error) {
+              dispatch(registerError(error));
+            }
           }
-        }
-        else{
-
-        }
-      })
-      .catch(function (error) {
-        console.error(error);
-        dispatch(registerError(error));
-        console.log(getState().registerReducer.error);
-      });
+          else{
+            dispatch(registerSuccess(reponse));
+          }
+        })
+        .catch(function (error) {
+          console.error(error);
+          dispatch(registerError(error));
+        });
+      }
   };
 }
