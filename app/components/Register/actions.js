@@ -3,10 +3,11 @@
  * https://github.com/reactjs/redux/issues/291
  */
 import Immutable from 'immutable';
- import {
-   AsyncStorage,
-   XMLHttpRequest
- } from 'react-native';
+
+import {
+  AsyncStorage,
+  XMLHttpRequest
+} from 'react-native';
 
 import * as actionTypes from '../../AppActionTypes';
 import { getRegister, getIsRegistered } from '../../reducers/registerReducers';
@@ -21,9 +22,10 @@ import {
 //Actions creator for Success Register
 export const registerSuccess = (reponse) => {
   return (dispatch, getState) => { 
+    console.info('Registration Successfull');
     const {onRegistering} = getRegister(getState());
-    const {isRegistered} = getIsRegistered(getState());
-    if(!onRegistering && isRegistered)
+    console.log(onRegistering);
+    if(onRegistering)
     {
         dispatch({reponse, type: actionTypes.REGISTER_SUCCESS});
         NavigationActions.navigate({ routeName: 'Dashboard' });
@@ -39,11 +41,14 @@ export const registerRequest = (name, type, email, password) => {
     email: email, 
     password: password
   };
+  console.info('Registration requested');
   return { user, type: actionTypes.REGISTER_ATTEMPT };
 }
 
 //Action creator for Register Error
 export const registerError = (error) => {
+  console.info('Registration Error');
+  console.log(error);
   return {error, type: actionTypes.REGISTER_ERROR};
 }
 
@@ -57,7 +62,7 @@ export const register = (user) => {
 
       // const { registerReducer } = getState(); //other way of implementing it
       const {onRegistering} = getRegister(getState());
-
+      
       //using get() since we are using immutable
       if(!onRegistering)
       {
@@ -89,7 +94,6 @@ export const register = (user) => {
           }
         })
         .catch(function (error) {
-          console.error(error);
           dispatch(registerError(error));
         });
       }

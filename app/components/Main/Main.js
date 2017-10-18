@@ -12,6 +12,7 @@ import { NavigationActions } from 'react-navigation';
 
 import LoginButton from './LoginButton';
 import RegisterButton from './RegisterButton';
+import styles from '../../AppStyles';
 
 class Main extends Component {
   constructor(props) {
@@ -23,10 +24,7 @@ class Main extends Component {
 
   render() {
     return(
-      <View>
-        <Text>
-        Welcome {this.state.message}
-        </Text>
+      <View style={styles._container}>
         <LoginButton/>
         <RegisterButton/>
       </View>

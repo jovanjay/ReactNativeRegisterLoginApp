@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button } from 'react-native';
+import { View, Button } from 'react-native';
 import { NavigationActions } from 'react-navigation';
+import styles from '../../AppStyles';
 
 const LoginButton = ({ loginScreen }) => (
-  <Button
-    title='Login'
-    onPress={ loginScreen }
-  />
+  <View style={styles._buttonContainer}>
+    <Button
+      title='Login'
+      color='#ffffff'
+      onPress={ loginScreen }
+    />
+  </View>
 );
 
 LoginButton.propTypes = {

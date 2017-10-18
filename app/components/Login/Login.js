@@ -21,23 +21,28 @@ class Login extends Component {
 
   render() {
     return(
-      <View>
+      <View style={styles._container}>
         <TextInput
         style={styles._textInput}
         title='Email'
+        placeholder='Email'
         onChangeText={(email) => this.setState({email})}
         value={this.state.email}/>
 
         <TextInput
         style={styles._textInput}
         title='password'
+        placeholder='Password'
         onChangeText={(password) => this.setState({password})}
         value={this.state.password}/>
 
-        <Button
-          title='Login'
-          onPress={() => this.props.loginAttempt(this.state.email,this.state.password)}
-        />
+        <View style={styles._buttonContainer}>
+          <Button
+            color='#ffffff'
+            title='Login'
+            onPress={() => this.props.loginAttempt(this.state.email,this.state.password)}
+          />
+        </View>
       </View>
     );
   }

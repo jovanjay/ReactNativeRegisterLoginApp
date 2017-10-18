@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button } from 'react-native';
+import { View, Button } from 'react-native';
 import { NavigationActions } from 'react-navigation';
+import styles from '../../AppStyles';
 
 const RegisterButton = ({ registerScreen }) => (
-  <Button
-    title='Register'
-    onPress={ registerScreen }
-  />
+  
+  <View style={styles._buttonContainer}>
+    <Button
+      title='Register'
+      color='#ffffff'
+      onPress={ registerScreen }
+    />
+  </View>
 );
 
 RegisterButton.propTypes = {
