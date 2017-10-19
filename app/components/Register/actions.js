@@ -3,12 +3,9 @@
  * https://github.com/reactjs/redux/issues/291
  */
 import Immutable from 'immutable';
-
 import {
-  AsyncStorage,
-  XMLHttpRequest
+  AsyncStorage
 } from 'react-native';
-
 import * as actionTypes from '../../AppActionTypes';
 import { getRegister, getIsRegistered } from '../../reducers/registerReducers';
 import Http from '../../AppHttp';
@@ -41,14 +38,14 @@ export const registerRequest = (name, type, email, password) => {
     email: email, 
     password: password
   };
-  console.info('Registration requested');
+  // console.info('Registration requested');
   return { user, type: actionTypes.REGISTER_ATTEMPT };
 }
 
 //Action creator for Register Error
 export const registerError = (error) => {
   console.info('Registration Error');
-  console.log(error);
+  // console.log(error);
   return {error, type: actionTypes.REGISTER_ERROR};
 }
 
@@ -77,7 +74,7 @@ export const register = (user) => {
           'type' : user.type
         })
         .then(response => {
-          console.log(response.data);
+          // console.log(response.data);
           if(response.status == 200 && response.status < 300)
           {
             try {
@@ -87,7 +84,7 @@ export const register = (user) => {
               AsyncStorage.setItem('token_type', JSON.stringify(response.data.token_type));
               dispatch(registerSuccess(response));
             } catch (error) {
-              console.log('Storing data error');
+              // console.log('Storing data error');
               dispatch(registerError(error));
             }
           }
@@ -96,7 +93,7 @@ export const register = (user) => {
           }
         })
         .catch(function (error) {
-          console.log('Error request');
+          // console.log('Error request');
           dispatch(registerError(error));
         });
       }

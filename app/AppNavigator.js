@@ -12,6 +12,7 @@ import MainScreen from './components/Main';
 import RegisterScreen from './components/Register';
 import DashBoardScreen from './components/Dashboard';
 
+//Navigator Stack
 export const AppNavigator = StackNavigator({
   Main: {
     screen: MainScreen,
@@ -24,7 +25,8 @@ export const AppNavigator = StackNavigator({
   Dashboard: { 
     screen: DashBoardScreen,
     navigationOptions: {
-      headerLeft: null
+      headerLeft: null,
+      title: 'My App'
     }
    },
 });

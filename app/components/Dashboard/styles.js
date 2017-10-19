@@ -1,5 +1,5 @@
 /**
- * Styles
+ * Component specific styles
  */
 import {
   StyleSheet
