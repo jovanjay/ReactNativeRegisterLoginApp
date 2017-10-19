@@ -21,7 +21,12 @@ export const AppNavigator = StackNavigator({
   },
   Login: { screen: LoginScreen },
   Register: { screen: RegisterScreen },
-  Dashboard: { screen: DashBoardScreen },
+  Dashboard: { 
+    screen: DashBoardScreen,
+    navigationOptions: {
+      headerLeft: null
+    }
+   },
 });
 
 const AppWithNavigationState = ({ dispatch, nav }) => (

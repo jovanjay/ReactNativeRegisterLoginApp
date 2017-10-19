@@ -12,6 +12,7 @@ import {
 import * as actionTypes from '../../AppActionTypes';
 import { getRegister, getIsRegistered } from '../../reducers/registerReducers';
 import Http from '../../AppHttp';
+import { NavigationActions } from 'react-navigation';
 
 import {
   APP_URL,
@@ -20,15 +21,14 @@ import {
 } from 'react-native-dotenv';
 
 //Actions creator for Success Register
-export const registerSuccess = (reponse) => {
+export const registerSuccess = (response) => {
   return (dispatch, getState) => { 
     console.info('Registration Successfull');
     const {onRegistering} = getRegister(getState());
-    console.log(onRegistering);
     if(onRegistering)
     {
-        dispatch({reponse, type: actionTypes.REGISTER_SUCCESS});
-        NavigationActions.navigate({ routeName: 'Dashboard' });
+        dispatch({response, type: actionTypes.REGISTER_SUCCESS});
+        dispatch(NavigationActions.navigate({ routeName: 'Dashboard' }));
     }
   };
 }
@@ -70,14 +70,15 @@ export const register = (user) => {
         dispatch(registerRequest(user.name, user.type, user.email, user.password));
       
         // call server for auth
-        Http.post('/m/register', {
+        Http.post('m/register', {
           'name' : user.name,
           'email' : user.email,
           'password' : user.password,
           'type' : user.type
         })
         .then(response => {
-          if(reponse.status == 200 && response.status < 300)
+          console.log(response.data);
+          if(response.status == 200 && response.status < 300)
           {
             try {
               AsyncStorage.setItem('access_token', JSON.stringify(response.data.access_token));
@@ -86,14 +87,16 @@ export const register = (user) => {
               AsyncStorage.setItem('token_type', JSON.stringify(response.data.token_type));
               dispatch(registerSuccess(response));
             } catch (error) {
+              console.log('Storing data error');
               dispatch(registerError(error));
             }
           }
           else{
-            dispatch(registerSuccess(reponse));
+            dispatch(registerSuccess(response));
           }
         })
         .catch(function (error) {
+          console.log('Error request');
           dispatch(registerError(error));
         });
       }

@@ -2,8 +2,8 @@
  * Presentational Component
  */
 import React, {Component} from 'react';
-
 import {
+  AsyncStorage,
   Button,
   Text,
   View,
@@ -15,7 +15,8 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: 'User'
+      message: 'User',
+      access: ''
     };
   }
 
@@ -25,9 +26,9 @@ class Dashboard extends Component {
         <Text>
         Welcome {this.state.message}
         </Text>
-        <Button
-          title='Logout'
-        />
+        <Text>
+          {this.state.access}
+        </Text>
       </View>
     );
   }
