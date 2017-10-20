@@ -15,6 +15,7 @@ import RegisterButton from './RegisterButton';
 import styles from '../../AppStyles';
 
 class Main extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {

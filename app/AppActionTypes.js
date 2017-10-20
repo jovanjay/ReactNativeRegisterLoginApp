@@ -1,5 +1,5 @@
 /**
- *
+ * Constants
  */
 export const LOGIN_ATTEMPT     = 'loginAttempt'
 export const LOGIN_ERROR = 'loginError';
