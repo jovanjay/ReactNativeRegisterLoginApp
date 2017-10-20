@@ -77,6 +77,7 @@ export const register = (user) => {
           // console.log(response.data);
           if(response.status == 200 && response.status < 300)
           {
+            console.log(response.data);
             try {
               AsyncStorage.setItem('access_token', JSON.stringify(response.data.access_token));
               AsyncStorage.setItem('expires_in', JSON.stringify(response.data.expires_in));
