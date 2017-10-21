@@ -1,6 +1,10 @@
 /**
  * Constants
  */
+export const LOADING = 'loading';
+export const LOADED = 'loaded';
+export const REFRESH_TOKEN = 'refreshToken';
+
 export const LOGIN_ATTEMPT     = 'loginAttempt'
 export const LOGIN_ERROR = 'loginError';
 export const LOGIN_SUCCESS = 'loginSuccess';

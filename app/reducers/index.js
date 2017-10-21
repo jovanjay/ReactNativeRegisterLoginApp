@@ -14,12 +14,14 @@ import navReducer from './navReducers';
  * Component Reducers / Selectors (*)
  */
 import loginReducer from './loginReducers';
+import splashReducer from './splashReducers';
 import registerReducer from './registerReducers';
 import dashboardReducer from './dashboardReducers';
 
 //Combine all reducers
 const AppReducer = combineReducers({
   navReducer,
+  splashReducer,
   loginReducer,
   registerReducer,
   dashboardReducer,

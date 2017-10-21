@@ -5,7 +5,8 @@ import { AppNavigator } from '../AppNavigator'
 /**
  * Initial State
  */
-const mainAction  = AppNavigator.router.getActionForPathAndParams('Main');
+const initialScreen = 'Splash';
+const mainAction  = AppNavigator.router.getActionForPathAndParams(initialScreen);
 const mainNavState = AppNavigator.router.getStateForAction(mainAction);
 const initialNavState = AppNavigator.router.getStateForAction(
   mainAction,
