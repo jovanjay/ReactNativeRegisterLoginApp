@@ -7,6 +7,7 @@ import { AppNavigator } from '../AppNavigator';
 const DEFAULT_STATE = new Immutable.Map({
     isLoading: false,
     isLoaded: false,
+    loadingError: false,
     refreshToken: false,
 });
 
@@ -16,6 +17,13 @@ export default function (state = DEFAULT_STATE, action) {
             return state.merge({
                 isLoading: true,
                 isLoaded: false
+            });
+            break;
+        case actionTypes.LOADING_ERROR:
+            return state.merge({
+                isLoading: false,
+                isLoaded: false,
+                loadingError: true,
             });
             break;
         case actionTypes.LOADED:

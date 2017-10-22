@@ -3,6 +3,7 @@
  */
 export const LOADING = 'loading';
 export const LOADED = 'loaded';
+export const LOADING_ERROR = 'loadingError';
 export const REFRESH_TOKEN = 'refreshToken';
 
 export const LOGIN_ATTEMPT     = 'loginAttempt'

@@ -50,7 +50,7 @@ export const login = (email, password) => {
       //tell app that is logging in
       dispatch(loginRequest(email, password));
       //call server for auth
-      Http.post('m/login', {
+      Http.post('/m/login', {
         'email' : email,
         'password' : password,
         'type' : 0

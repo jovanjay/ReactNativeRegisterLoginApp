@@ -16,12 +16,16 @@ import {
     BASIC_AUTH_PASSWORD
 } from 'react-native-dotenv';
 
+export const loadingError = (error) => {
+    console.info('Loading Error ');
+    return {error,type: actionTypes.LOADING_ERROR}
+}                                                                                
+
 /**
  * Checks if the current access token is valid
  */
 export const handshake = () => {
     return async (dispatch, getState) => {
-        console.log('Hand Shake');
         try {
             if(!getState().splashReducer.get('isLoading'))
             {
@@ -30,39 +34,34 @@ export const handshake = () => {
                 });
             
                 const token = await AsyncStorage.getItem('access_token');
+                token = token.replace(/\"/g,'');
+                const access_token = 'Bearer ';
+                console.log(access_token.concat(token));
                 if(token.length > 0) {
-                    console.log('requesting...');
-                    Http.get('api/user', {
-                        headers : {
-                            'Authorization': 'Bearer ' + token,
-                            'Accept': 'application/json'
+                    Http.get('/api/user', {
+                        headers: {
+                            Authorization: access_token.concat(token)
                         }
                     })
                     .then(response => {
-                        console.log(response.data);
-                        if(response.status == 200 && response.status < 300)
-                        {
-                            try {
+                        if(response.status == 200 && response.status < 300) {
+                            if(response.data.id > 0) {
                                 dispatch(NavigationActions.navigate({ routeName: 'Dashboard' }));
-                            } catch (error) {
-                                console.log(error)
                             }
-                        }
-                        else{
-                            
-                            console.log(response.status)
+                        }else {
+                            console.log('failed to load');
                         }
                     })
                     .catch(function (error) {
-                        console.log(error);
+                        dispatch(loadingError(error));
+                        dispatch(NavigationActions.navigate({ routeName: 'Main' }));
                     });
-                }
-                else{
-                    console.log('Go to main');
+                }else {
                     dispatch(NavigationActions.navigate({ routeName: 'Main' }));
                 }
             }
         } catch (error) {
+            dispatch(loadingError(error));
         }
     };
 }

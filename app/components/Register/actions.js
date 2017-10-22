@@ -67,7 +67,7 @@ export const register = (user) => {
         dispatch(registerRequest(user.name, user.type, user.email, user.password));
       
         // call server for auth
-        Http.post('m/register', {
+        Http.post('/m/register', {
           'name' : user.name,
           'email' : user.email,
           'password' : user.password,
