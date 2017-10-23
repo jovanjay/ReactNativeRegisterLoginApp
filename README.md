@@ -4,6 +4,7 @@ A simple React Native App for registering/logging in to a Laravel 5.4 app via AP
 ## Dependecies ##
 [axios]
 [immutable]
+[react-native-dotenv]
 [react-navigation]
 [react-redux]
 [redux-thunk]
