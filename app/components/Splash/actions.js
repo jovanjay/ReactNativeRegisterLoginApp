@@ -48,6 +48,10 @@ export const handshake = () => {
                             if(response.data.id > 0) {
                                 dispatch(NavigationActions.navigate({ routeName: 'Dashboard' }));
                             }
+                            else
+                            {
+                                //Route to Login to refresh tokens
+                            }
                         }else {
                             console.log('failed to load');
                         }

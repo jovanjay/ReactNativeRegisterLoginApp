@@ -1,6 +1,9 @@
 /**
  * Constants
  */
+export const USER_INFO_LOADING = 'userInfoLoading';
+export const USER_INFO_LOADED = 'userInfoLoaded';
+
 export const LOADING = 'loading';
 export const LOADED = 'loaded';
 export const LOADING_ERROR = 'loadingError';

@@ -44,11 +44,12 @@ export const loginError = (error) => {
  */
 export const login = (email, password) => {
   return (dispatch, getState) => {
-    const { loginReducer } = getState();
-    if(!loginReducer.get('onLogging'))
+    const { login } = getState();
+    if(!login.get('onLogging'))
     {
       //tell app that is logging in
       dispatch(loginRequest(email, password));
+
       //call server for auth
       Http.post('/m/login', {
         'email' : email,
@@ -59,14 +60,20 @@ export const login = (email, password) => {
         if(reponse.status == 200 && response.status < 300)
         {
           try {
+            //Refresh token for this request
+            AsyncStorage.setItem('access_token', JSON.stringify(response.data.access_token));
+            AsyncStorage.setItem('expires_in', JSON.stringify(response.data.expires_in));
+            AsyncStorage.setItem('refresh_token', JSON.stringify(response.data.refresh_token));
+            AsyncStorage.setItem('token_type', JSON.stringify(response.data.token_type));
             loginSuccess(response);
+            dispatch(NavigationActions.navigate({ routeName: 'Dashboard' }));
           } catch (error) {
-            loginError(error);
+            dispatch(loginError(error));
           }
         }
       })
       .catch(function (error) {
-        loginError(error);
+        dispatch(loginError(error));
       });
     }
   };
