@@ -15,7 +15,7 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: 'User',
+      message: 'This is a test content',
       access: ''
     };
   }
@@ -24,10 +24,10 @@ class Dashboard extends Component {
     return(
       <View>
         <Text>
-        Welcome {this.state.message}
+        Welcome {this.state.userInfo.name}
         </Text>
         <Text>
-          {this.state.access}
+          {this.state.message}
         </Text>
       </View>
     );
