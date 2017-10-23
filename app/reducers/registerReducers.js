@@ -1,5 +1,5 @@
 import Immutable from 'immutable';
-import * as actionTypes from '../AppActionTypes';
+import * as actionTypes from '../lib/AppActionTypes';
 
 //Reducer
 const DEFAULT_STATE = new Immutable.Map({

@@ -4,7 +4,6 @@
 import Register from './Register';
 import {connect} from 'react-redux';
 import * as actions from './actions';
-import {getNav, getRegister} from '../../reducers';
 
 const mapStateProps = (state) => ({
   registerAttempt: state.registerReducer.registerAttempt

@@ -1,7 +1,7 @@
 import Immutable from 'immutable';
-import * as actionTypes from '../AppActionTypes';
+import * as actionTypes from '../lib/AppActionTypes';
 import { NavigationActions } from 'react-navigation';
-import { AppNavigator } from '../AppNavigator';
+import { AppNavigator } from '../lib/AppNavigator';
 
 //Reducer
 const DEFAULT_STATE = new Immutable.Map({

@@ -3,15 +3,19 @@
  * https://github.com/reactjs/redux/issues/291
  */
 import Immutable from 'immutable';
-import * as actionTypes from '../../AppActionTypes';
+import * as actionTypes from '../../lib/AppActionTypes';
 import { getIsLogging } from '../../reducers/loginReducers';
-import Http from '../../AppHttp';
+import Http from '../../lib/AppHttp';
 import { NavigationActions } from 'react-navigation';
 import thunk from 'redux-thunk';
 import {
   AsyncStorage,
   XMLHttpRequest
 } from 'react-native';
+
+import {
+  APP_END_POINT_LOGIN
+} from 'react-native-dotenv';
 
 //Actions creator for Success Login
 export const loginSuccess = (reponse) => {
@@ -51,7 +55,7 @@ export const login = (email, password) => {
       dispatch(loginRequest(email, password));
 
       //call server for auth
-      Http.post('/m/login', {
+      Http.post(APP_END_POINT_LOGIN, {
         'email' : email,
         'password' : password,
         'type' : 0

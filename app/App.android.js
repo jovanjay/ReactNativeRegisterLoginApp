@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import AppReducer from './reducers';
-import AppWithNavigationState from './AppNavigator';
+import AppWithNavigationState from './lib/AppNavigator';
 
 class LoginApp extends Component {
   store = createStore(

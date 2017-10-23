@@ -3,7 +3,6 @@
  */
 import React, {Component} from 'react';
 import {
-  AsyncStorage,
   Button,
   Text,
   View,
@@ -12,6 +11,11 @@ import {
 import styles from './styles';
 
 class Dashboard extends Component {
+
+  componentDidMount(){
+    this.props.load();
+  }
+
   constructor(props) {
     super(props);
     this.state = {

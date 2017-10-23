@@ -3,7 +3,7 @@
  */
 import { combineReducers } from 'redux';
 import { NavigationActions } from 'react-navigation';
-import { AppNavigator } from '../AppNavigator';
+import { AppNavigator } from '../lib/AppNavigator';
 
 /**
  * Main Navigation Reducer

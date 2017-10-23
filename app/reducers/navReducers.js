@@ -1,6 +1,6 @@
-import * as actionTypes from '../AppActionTypes';
+import * as actionTypes from '../lib/AppActionTypes';
 import { NavigationActions } from 'react-navigation';
-import { AppNavigator } from '../AppNavigator'
+import { AppNavigator } from '../lib/AppNavigator'
 
 /**
  * Initial State

@@ -6,14 +6,12 @@ import Immutable from 'immutable';
 import {
   AsyncStorage
 } from 'react-native';
-import * as actionTypes from '../../AppActionTypes';
-import Http from '../../AppHttp';
+import * as actionTypes from '../../lib/AppActionTypes';
+import Http from '../../lib/AppHttp';
 import { NavigationActions } from 'react-navigation';
 
 import {
-    APP_URL,
-    BASIC_AUTH_UNAME,
-    BASIC_AUTH_PASSWORD
+    APP_END_POINT_USER_META
 } from 'react-native-dotenv';
 
 export const loadingError = (error) => {
@@ -36,9 +34,8 @@ export const handshake = () => {
                 const token = await AsyncStorage.getItem('access_token');
                 token = token.replace(/\"/g,'');
                 const access_token = 'Bearer ';
-                console.log(access_token.concat(token));
                 if(token.length > 0) {
-                    Http.get('/api/user', {
+                    Http.get(APP_END_POINT_USER_META, {
                         headers: {
                             Authorization: access_token.concat(token)
                         }

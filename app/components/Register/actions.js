@@ -6,21 +6,19 @@ import Immutable from 'immutable';
 import {
   AsyncStorage
 } from 'react-native';
-import * as actionTypes from '../../AppActionTypes';
+import * as actionTypes from '../../lib/AppActionTypes';
 import { getRegister, getIsRegistered } from '../../reducers/registerReducers';
-import Http from '../../AppHttp';
+import Http from '../../lib/AppHttp';
 import { NavigationActions } from 'react-navigation';
 
 import {
-  APP_URL,
-  BASIC_AUTH_UNAME,
-  BASIC_AUTH_PASSWORD
+  APP_END_POINT_REGISTER
 } from 'react-native-dotenv';
 
 //Actions creator for Success Register
 export const registerSuccess = (response) => {
   return (dispatch, getState) => { 
-    console.info('Registration Successfull');
+    // console.info('Registration Successfull');
     const {onRegistering} = getRegister(getState());
     if(onRegistering)
     {
@@ -44,7 +42,7 @@ export const registerRequest = (name, type, email, password) => {
 
 //Action creator for Register Error
 export const registerError = (error) => {
-  console.info('Registration Error');
+  // console.info('Registration Error');
   // console.log(error);
   return {error, type: actionTypes.REGISTER_ERROR};
 }
@@ -67,7 +65,7 @@ export const register = (user) => {
         dispatch(registerRequest(user.name, user.type, user.email, user.password));
       
         // call server for auth
-        Http.post('/m/register', {
+        Http.post(APP_END_POINT_REGISTER, {
           'name' : user.name,
           'email' : user.email,
           'password' : user.password,
@@ -77,7 +75,6 @@ export const register = (user) => {
           // console.log(response.data);
           if(response.status == 200 && response.status < 300)
           {
-            console.log(response.data);
             try {
               AsyncStorage.setItem('access_token', JSON.stringify(response.data.access_token));
               AsyncStorage.setItem('expires_in', JSON.stringify(response.data.expires_in));
