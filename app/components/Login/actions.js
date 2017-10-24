@@ -47,18 +47,20 @@ export const loginError = (error) => {
  * this.props.login(); or this.props.dispatch(login());
  */
 export const login = (email, password) => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const { login } = getState();
     if(!login.get('onLogging'))
     {
       //tell app that is logging in
       dispatch(loginRequest(email, password));
 
+      const refresh_token = await AsyncStorage.getItem('refresh_token');
+
       //call server for auth
       Http.post(APP_END_POINT_LOGIN, {
         'email' : email,
         'password' : password,
-        'type' : 0
+        'refresh_token' : refresh_token.replace(/\"/g,'')
       })
       .then(response => {
         if(reponse.status == 200 && response.status < 300)

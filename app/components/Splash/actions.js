@@ -24,6 +24,7 @@ export const loadingError = (error) => {
  */
 export const handshake = () => {
     return async (dispatch, getState) => {
+        console.log('loading');
         try {
             if(!getState().splashReducer.get('isLoading'))
             {
@@ -32,9 +33,10 @@ export const handshake = () => {
                 });
             
                 const token = await AsyncStorage.getItem('access_token');
-                token = token.replace(/\"/g,'');
-                const access_token = 'Bearer ';
                 if(token.length > 0) {
+                    token = token.replace(/\"/g,'');
+                    const access_token = 'Bearer ';
+                    
                     Http.get(APP_END_POINT_USER_META, {
                         headers: {
                             Authorization: access_token.concat(token)
@@ -42,6 +44,7 @@ export const handshake = () => {
                     })
                     .then(response => {
                         if(response.status == 200 && response.status < 300) {
+                            console.log(response.data);
                             if(response.data.id > 0) {
                                 AsyncStorage.setItem('user_info', JSON.stringify(response.data));
                                 dispatch(NavigationActions.navigate({ routeName: 'Dashboard' }));

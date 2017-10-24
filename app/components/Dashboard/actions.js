@@ -22,19 +22,23 @@ export const loadingError = (error) => {
  */
 export const userinfo = () => {
     return async (dispatch, getState) => {
-        dispatch({
-            type : actionTypes.USER_INFO_LOADING
-        });
 
         const {userInfoIsLoading,userInfoLoaded} = getUserInfoStatus(getState());
-
+        // console.log(userInfoIsLoading);
+        // console.log(userInfoLoaded);
         if(!userInfoIsLoading) {
+            
+            dispatch({
+                type : actionTypes.USER_INFO_LOADING
+            });
+
             try {
                 const user_info = await AsyncStorage.getItem('user_info');
+                // console.log(user_info);
                 if(user_info.id > 0)
                 {
                     dispatch({
-                        user_info : user_info,
+                        userInfo : user_info,
                         type : actionTypes.USER_INFO_LOADED
                     });
                 }
