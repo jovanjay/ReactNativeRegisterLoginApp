@@ -2,7 +2,7 @@
   "name": "simple-logip-app",
   "version": "0.0.0",
   "description": "Hello Expo!",
-  "author": null,
+  "author": "Jovan Jay M. Villamor",
   "private": true,
   "main": "./App.js",
   "dependencies": {
