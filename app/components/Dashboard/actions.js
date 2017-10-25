@@ -38,7 +38,7 @@ export const userinfo = () => {
                 if(user_info.id > 0)
                 {
                     dispatch({
-                        userInfo : user_info,
+                        userInfo : JSON.parse(user_info),
                         type : actionTypes.USER_INFO_LOADED
                     });
                 }

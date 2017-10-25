@@ -29,7 +29,7 @@ class Dashboard extends Component {
     return(
       <View>
         <Text>
-        Welcome {this.state.name}
+        Welcome {this.state.userInfo.name}
         </Text>
         <Text>
           {this.state.message}
