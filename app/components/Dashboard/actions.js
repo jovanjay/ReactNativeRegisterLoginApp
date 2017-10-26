@@ -34,11 +34,13 @@ export const userinfo = () => {
 
             try {
                 const user_info = await AsyncStorage.getItem('user_info');
-                // console.log(user_info);
-                if(user_info.id > 0)
+                // console.log(JSON.parse(user_info));
+                const ui = JSON.parse(user_info);
+                if(ui.id > 0)
                 {
+                    console.log('dispatch loaded');
                     dispatch({
-                        userInfo : JSON.parse(user_info),
+                        ui,
                         type : actionTypes.USER_INFO_LOADED
                     });
                 }

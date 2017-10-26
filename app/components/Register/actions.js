@@ -18,7 +18,7 @@ import {
 //Actions creator for Success Register
 export const registerSuccess = (response) => {
   return (dispatch, getState) => { 
-    // console.info('Registration Successfull');
+    console.info('Registration Successfull');
     const {onRegistering} = getRegister(getState());
     if(onRegistering)
     {
@@ -36,14 +36,14 @@ export const registerRequest = (name, type, email, password) => {
     email: email, 
     password: password
   };
-  // console.info('Registration requested');
+  console.info('Registration requested');
   return { user, type: actionTypes.REGISTER_ATTEMPT };
 }
 
 //Action creator for Register Error
 export const registerError = (error) => {
-  // console.info('Registration Error');
-  // console.log(error);
+  console.info('Registration Error');
+  console.log(error);
   return {error, type: actionTypes.REGISTER_ERROR};
 }
 
@@ -54,7 +54,7 @@ export const registerError = (error) => {
  */
 export const register = (user) => {
   return (dispatch, getState) => {
-
+      console.log('Registering');
       // const { registerReducer } = getState(); //other way of implementing it
       const {onRegistering} = getRegister(getState());
       

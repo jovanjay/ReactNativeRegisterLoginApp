@@ -25,11 +25,11 @@ class Dashboard extends Component {
   }
 
   render() {
-    // console.log(this.props);
+    console.log(this.state);
     return(
       <View>
         <Text>
-        Welcome {this.state.userInfo.name}
+        Welcome
         </Text>
         <Text>
           {this.state.message}
