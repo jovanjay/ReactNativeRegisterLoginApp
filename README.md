@@ -5,15 +5,15 @@ A simple React Native App for registering/logging in to a Laravel 5.4 app via AP
 I got "curious" with React Native + Redux.
 
 ## Dependecies ##
-[axios]
-[immutable]
-[react-native-dotenv]
-[react-navigation]
-[react-redux]
-[redux-thunk]
+[axios]  
+[immutable]  
+[react-native-dotenv]  
+[react-navigation]  
+[react-redux]  
+[redux-thunk]  
 
 ## Test Environment ##
-[EXPO XDE](https://expo.io/).
+[EXPO XDE](https://expo.io/).  
 [Android/IOS Simulator]
 
 ### Disclaimer ###
