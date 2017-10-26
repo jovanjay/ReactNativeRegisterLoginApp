@@ -16,6 +16,11 @@ class Dashboard extends Component {
     this.props.load();
   }
 
+  //TESTING
+  componentWillMount() {
+    this.props.getData();
+  }
+
   constructor(props) {
     super(props);
     this.state = {
