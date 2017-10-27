@@ -2,7 +2,7 @@
  * Presentational Component
  */
 import Immutable from 'immutable';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Button,
   Text,
@@ -13,7 +13,7 @@ import styles from './styles';
 
 class Dashboard extends Component {
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.load();
   }
 
@@ -32,7 +32,7 @@ class Dashboard extends Component {
 
   render() {
     console.log(this.state);
-    return(
+    return (
       <View>
         <Text>Data from AsyncStorage</Text>
         <ul>
