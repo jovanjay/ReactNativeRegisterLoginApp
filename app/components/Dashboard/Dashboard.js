@@ -34,10 +34,11 @@ class Dashboard extends Component {
     console.log(this.state);
     return(
       <View>
-        <Text>
-        Data from AsyncStorage
-        {this.state.get('userInfo').name}
-        </Text>
+        <Text>Data from AsyncStorage</Text>
+        <ul>
+          <li>{this.state.get('userInfo').ID || '-'}</li>
+          <li>{this.state.get('userInfo').name || '-'}</li>
+        </ul>
         <Text>
           {this.state.message}
         </Text>
