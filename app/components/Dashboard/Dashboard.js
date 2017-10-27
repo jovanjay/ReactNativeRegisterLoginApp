@@ -1,6 +1,7 @@
 /**
  * Presentational Component
  */
+import Immutable from 'immutable';
 import React, {Component} from 'react';
 import {
   Button,
@@ -34,7 +35,8 @@ class Dashboard extends Component {
     return(
       <View>
         <Text>
-        Welcome {this.state.userInfo.name}
+        Data from AsyncStorage
+        {this.state.get('userInfo').name}
         </Text>
         <Text>
           {this.state.message}
