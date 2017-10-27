@@ -22,7 +22,7 @@ export default function (state = DEFAULT_STATE, action) {
       return state.merge({
         userInfoLoading: false,
         userInfoLoaded: true,
-        userInfo: action.userInfo
+        userInfo: action
       });
       break;
 

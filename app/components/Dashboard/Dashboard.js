@@ -35,12 +35,8 @@ class Dashboard extends Component {
     return(
       <View>
         <Text>
-<<<<<<< HEAD
         Data from AsyncStorage
         {this.state.get('userInfo').name}
-=======
-        Welcome
->>>>>>> ab0714b187ff7b12f20d0891e8c8a555b02bd6c5
         </Text>
         <Text>
           {this.state.message}
