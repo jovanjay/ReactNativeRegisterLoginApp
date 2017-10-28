@@ -24,21 +24,18 @@ export const userinfo = () => {
     return async (dispatch, getState) => {
 
         const { userInfoIsLoading, userInfoLoaded } = getUserInfoStatus(getState());
-        // console.log(userInfoIsLoading);
-        // console.log(userInfoLoaded);
+        
         if (!userInfoIsLoading) {
 
             dispatch({
                 type: actionTypes.USER_INFO_LOADING
             });     
-                
+            console.log('Loading userinfo...');        
             try {
                 const user_info = await AsyncStorage.getItem('user_info');
-                // console.log(user_info);
-                if (user_info.id > 0)
-                    const ui = JSON.parse(user_info);
-                if (ui.id > 0) {
-                    console.log('dispatch loaded');
+                const ui = JSON.parse(user_info);
+                if (ui.id > 0)
+                {
                     dispatch({
                         ui,
                         type: actionTypes.USER_INFO_LOADED

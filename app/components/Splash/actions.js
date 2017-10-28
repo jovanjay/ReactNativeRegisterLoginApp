@@ -44,7 +44,7 @@ export const handshake = () => {
                     })
                     .then(response => {
                         if(response.status == 200 && response.status < 300) {
-                            console.log(response.data);
+                            AsyncStorage.removeItem('user_info');
                             if(response.data.id > 0) {
                                 AsyncStorage.setItem('user_info', JSON.stringify(response.data));
                                 dispatch(NavigationActions.navigate({ routeName: 'Dashboard' }));
