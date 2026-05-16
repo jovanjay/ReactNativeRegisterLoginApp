@@ -5,3 +5,5 @@ npm-debug.*
 \.DS_Store
 
 \.env
+
+UPGRADE.md
